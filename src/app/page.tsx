@@ -1,5 +1,6 @@
 'use client';
 
+import { MainNav } from '@/components/main-nav';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
@@ -10,5 +11,9 @@ export default function Home() {
 		return null;
 	}
 
-	return <div></div>;
+	return (
+		<>
+			<MainNav />
+		</>
+	);
 }

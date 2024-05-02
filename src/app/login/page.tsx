@@ -9,7 +9,7 @@ const Login = () => {
 	const [password, setPassword] = useState('');
 	const router = useRouter();
 
-	if (!localStorage.getItem('token')) {
+	if (localStorage.getItem('token')) {
 		router.push('/');
 		return null;
 	}
