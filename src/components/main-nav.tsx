@@ -26,7 +26,7 @@ export default function MainNav() {
 				<SheetContent side='left'>
 					<Link href='#'>
 						{/* <MountainIcon className='h-6 w-6' /> */}
-						<span className='sr-only'>Acme Inc</span>
+						<span className='sr-only'>Clean Car</span>
 					</Link>
 					<div className='grid gap-2 py-6'>
 						<Link className='flex w-full items-center py-2 text-lg font-semibold text-[#2b2e83]' href='#elektriciteit'>
@@ -60,34 +60,34 @@ export default function MainNav() {
 				<NavigationMenu className='hidden lg:flex'>
 					<NavigationMenuList>
 						<NavigationMenuLink asChild>
-							<Link className='group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm text-[#2b2e83] font-medium transition-colors hover:bg-gray-100 hover:text-[#10a8e2] focus:bg-gray-100 focus:text-[#10a8e2] focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50' href='#elektriciteit'>
+							<Link className='group inline-flex h-9 w-max items-center justify-center rounded-md bg-white !mx-2 px-4 py-2 text-sm text-[#2b2e83] font-medium transition-colors hover:bg-gray-100 hover:text-[#10a8e2] focus:bg-gray-100 focus:text-[#10a8e2] focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50' href='#elektriciteit'>
 								Elektriciteit
 							</Link>
 						</NavigationMenuLink>
 						<NavigationMenuLink asChild>
-							<Link className='group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm text-[#2b2e83] font-medium transition-colors hover:bg-gray-100 hover:text-[#10a8e2] focus:bg-gray-100 focus:text-[#10a8e2] focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50' href='#laadpaal'>
+							<Link className='group inline-flex h-9 w-max items-center justify-center rounded-md bg-white !mx-2 px-4 py-2 text-sm text-[#2b2e83] font-medium transition-colors hover:bg-gray-100 hover:text-[#10a8e2] focus:bg-gray-100 focus:text-[#10a8e2] focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50' href='#laadpaal'>
 								Laadpaal
 							</Link>
 						</NavigationMenuLink>
 						<NavigationMenuLink asChild>
-							<Link className='group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm text-[#2b2e83] font-medium transition-colors hover:bg-gray-100 hover:text-[#10a8e2] focus:bg-gray-100 focus:text-[#10a8e2] focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50' href='#'>
+							<Link className='group inline-flex h-9 w-max items-center justify-center rounded-md bg-white !mx-2 px-4 py-2 text-sm text-[#2b2e83] font-medium transition-colors hover:bg-gray-100 hover:text-[#10a8e2] focus:bg-gray-100 focus:text-[#10a8e2] focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50' href='#'>
 								Services
 							</Link>
 						</NavigationMenuLink>
 						<NavigationMenuLink asChild>
-							<Link className='group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm text-[#2b2e83] font-medium transition-colors hover:bg-gray-100 hover:text-[#10a8e2] focus:bg-gray-100 focus:text-[#10a8e2] focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50' href='#'>
+							<Link className='group inline-flex h-9 w-max items-center justify-center rounded-md bg-white !mx-2 px-4 py-2 text-sm text-[#2b2e83] font-medium transition-colors hover:bg-gray-100 hover:text-[#10a8e2] focus:bg-gray-100 focus:text-[#10a8e2] focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50' href='#'>
 								Portfolio
 							</Link>
 						</NavigationMenuLink>
 						<NavigationMenuLink asChild>
-							<Link className='group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm text-[#2b2e83] font-medium transition-colors hover:bg-gray-100 hover:text-[#10a8e2] focus:bg-gray-100 focus:text-[#10a8e2] focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50' href='#'>
+							<Link className='group inline-flex h-9 w-max items-center justify-center rounded-md bg-white !mx-2 px-4 py-2 text-sm text-[#2b2e83] font-medium transition-colors hover:bg-gray-100 hover:text-[#10a8e2] focus:bg-gray-100 focus:text-[#10a8e2] focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50' href='#'>
 								Contact
 							</Link>
 						</NavigationMenuLink>
 					</NavigationMenuList>
 				</NavigationMenu>
 			</div>
-			<div className='hidden md:block ml-auto'>
+			<div className='hidden md:block ml-auto mr-8'>
 				<Button className='bg-[#2b2e83] text-white rounded hover:bg-[#10a8e2]' onClick={handleLogout}>
 					<span className='mr-2'>
 						<LogOut />
