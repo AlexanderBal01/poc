@@ -18,7 +18,7 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const res = await fetch(`http://192.168.1.120:1880/login/${userName}`, {
+		const res = await fetch(`http://192.168.1.61:1880/login/${userName}`, {
 			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
