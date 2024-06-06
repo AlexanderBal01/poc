@@ -21,7 +21,7 @@ export const ElectricityCardPie = () => {
 
 	useEffect(() => {
 		const interval = setInterval(async () => {
-			const res = await fetch(`http://192.168.1.61:1880/electricity/status`, {
+			const res = await fetch(`http://192.168.1.61:1880/electricity/status?token=${localStorage.getItem('token')}`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',
@@ -49,10 +49,19 @@ export const ElectricityCardPie = () => {
 		<Card className='my-5 mx-10'>
 			<CardHeader className='items-center'>
 				<CardTitle className='items-center justify-center'>Elektriciteit</CardTitle>
-				<CardDescription>informatie</CardDescription>
+				<CardDescription>
+					Huidig verbruik: <b>{dataPie.datasets[0].data[0]}</b> kW
+				</CardDescription>
+				<CardDescription>
+					Huidige opbrengst: <b>{dataPie.datasets[0].data[1]}</b> kW
+				</CardDescription>
+				<CardDescription>
+					Huidige import: <b>{dataPie.datasets[0].data[2]}</b> kW
+				</CardDescription>
 			</CardHeader>
 			<CardContent>
 				<Pie data={dataPie} width={25} height={25} />
+				<p className='text-center'></p>
 			</CardContent>
 		</Card>
 	);
@@ -73,7 +82,7 @@ export const ElectricityCardDonut = () => {
 
 	useEffect(() => {
 		const interval = setInterval(async () => {
-			const res = await fetch(`http://192.168.1.61:1880/electricity/status`, {
+			const res = await fetch(`http://192.168.1.61:1880/electricity/status?token=${localStorage.getItem('token')}`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',
@@ -101,7 +110,15 @@ export const ElectricityCardDonut = () => {
 		<Card className='my-5 mx-10'>
 			<CardHeader className='items-center'>
 				<CardTitle className='items-center justify-center'>Elektriciteit</CardTitle>
-				<CardDescription>informatie</CardDescription>
+				<CardDescription>
+					Huidig verbruik: <b>{dataDonut.datasets[0].data[0]}</b> kW
+				</CardDescription>
+				<CardDescription>
+					Huidige opbrengst: <b>{dataDonut.datasets[0].data[1]}</b> kW
+				</CardDescription>
+				<CardDescription>
+					Huidige import: <b>{dataDonut.datasets[0].data[2]}</b> kW
+				</CardDescription>
 			</CardHeader>
 			<CardContent>
 				<Doughnut data={dataDonut} width={25} height={25} />
