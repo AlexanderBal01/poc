@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
 import { log } from 'console';
 
-export const LaadpaalCardCarouselContent = (props) => {
+export const LaadpaalCardCarouselContent = (props: any) => {
 	const { laadpaalInfo } = props;
 	console.log(laadpaalInfo);
 
@@ -38,7 +38,7 @@ export const LaadpaalCardCarouselContent = (props) => {
 	);
 };
 
-export const LaadpaalCardContent = (props) => {
+export const LaadpaalCardContent = (props: any) => {
 	const { laadpaalInfo } = props;
 
 	return (

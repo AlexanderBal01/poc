@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-var bcrypt = require('bcryptjs');
+import { logUserIn, loginRequest } from '@/hooks/loginHook';
 
 const Login = () => {
 	const [userName, setuserName] = useState('');
@@ -15,25 +15,12 @@ const Login = () => {
 		return null;
 	}
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e: any) => {
 		e.preventDefault();
 
-		const res = await fetch(`http://192.168.1.61:1880/login/${userName}`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		});
+		const data = await loginRequest(userName);
 
-		const data = await res.json();
-
-		if (bcrypt.compareSync(password, data[0].password)) {
-			localStorage.setItem('token', 'true');
-			router.push('/');
-		} else {
-			console.log('Login failed');
-			setError(true);
-		}
+		logUserIn(password, data, setError, router);
 	};
 
 	return (
