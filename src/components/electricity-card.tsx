@@ -17,10 +17,10 @@ export const ElectricityCardPie = (props: any) => {
 					Huidig verbruik: <b>{chartData.datasets[0].data[0]}</b> kW
 				</CardDescription>
 				<CardDescription>
-					Huidige opbrengst: <b>{chartData.datasets[0].data[1]}</b> kW
+					Huidige import: <b>{chartData.datasets[0].data[1]}</b> kW
 				</CardDescription>
 				<CardDescription>
-					Huidige import: <b>{chartData.datasets[0].data[2]}</b> kW
+					Huidige opbrengst: <b>{chartData.datasets[0].data[2]}</b> kW
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
@@ -42,10 +42,10 @@ export const ElectricityCardDonut = (props: any) => {
 					Huidig verbruik: <b>{chartData.datasets[0].data[0]}</b> kW
 				</CardDescription>
 				<CardDescription>
-					Huidige opbrengst: <b>{chartData.datasets[0].data[1]}</b> kW
+					Huidige import: <b>{chartData.datasets[0].data[1]}</b> kW
 				</CardDescription>
 				<CardDescription>
-					Huidige import: <b>{chartData.datasets[0].data[2]}</b> kW
+					Huidige opbrengst: <b>{chartData.datasets[0].data[2]}</b> kW
 				</CardDescription>
 			</CardHeader>
 			<CardContent>

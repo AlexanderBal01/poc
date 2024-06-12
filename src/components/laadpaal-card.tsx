@@ -1,10 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { LaadpaalCardCarouselContent, LaadpaalCardContent } from './laadpaal-card-content';
+import useWebSocket, { ReadyState } from 'react-use-websocket';
 
 const LaadpaalCard = () => {
+	const WS_URL = 'ws://192.168.1.61:1880/ws/charging-station/status';
+
 	const [isMobile, setIsMobile] = useState(false);
 	const [data, setData] = useState({});
+
+	const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(WS_URL, {
+		share: false,
+		shouldReconnect: () => true,
+	});
+
+	useEffect(() => {
+		console.log('Connection state changed');
+		if (readyState === ReadyState.OPEN) {
+			console.log('WebSocket connection is open');
+		}
+	}, [readyState]);
+
+	// Run when a new WebSocket message is received (lastJsonMessage)
+	useEffect(() => {
+		if (lastJsonMessage !== null) {
+			setData(lastJsonMessage[0]);
+			console.log(lastJsonMessage);
+		}
+	}, [lastJsonMessage]);
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -20,20 +43,6 @@ const LaadpaalCard = () => {
 		// Clean up the event listener
 		return () => window.removeEventListener('resize', handleResize);
 	}, []);
-
-	useEffect(() => {
-		const interval = setInterval(async () => {
-			const res = await fetch(`http://192.168.1.61:1880/charging-station/info?token=${localStorage.getItem('token')}`, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			});
-
-			const response = await res.json();
-			setData([response[0]]);
-		}, 1000);
-	});
 
 	return (
 		<Card className='my-5 mx-10 md'>

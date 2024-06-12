@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { ElectricityCardDonut, ElectricityCardPie } from './electricity-card';
+import useWebSocket, { ReadyState } from 'react-use-websocket';
 
 const Electricity = () => {
+	const WS_URL = 'ws://192.168.1.61:1880/ws/electricity';
+
 	const [data, setData] = useState({
 		labels: ['', '', ''],
 		datasets: [
@@ -15,31 +18,35 @@ const Electricity = () => {
 		],
 	});
 
-	useEffect(() => {
-		const interval = setInterval(async () => {
-			const res = await fetch(`http://192.168.1.61:1880/electricity/status?token=${localStorage.getItem('token')}`, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			});
+	const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(WS_URL, {
+		share: false,
+		shouldReconnect: () => true,
+	});
 
-			const response = await res.json();
-			const label = ['Huidig verbruik', 'Huidige opbrengst', 'Huidige import'];
-			const data = [response[0].huidigVerbruik, response[0].huidigeOpbrengst, response[0].huidigeImport];
+	useEffect(() => {
+		console.log('Connection state changed');
+		if (readyState === ReadyState.OPEN) {
+			console.log('WebSocket connection is open');
+		}
+	}, [readyState]);
+
+	// Run when a new WebSocket message is received (lastJsonMessage)
+	useEffect(() => {
+		if (lastJsonMessage !== null) {
 			setData({
-				labels: label,
+				labels: ['huidig verbruik', 'huidige import', 'huidige opbrengst'],
 				datasets: [
 					{
 						label: 'Elektriciteit',
-						data: data,
+						data: [lastJsonMessage[0].huidigVerbruik, lastJsonMessage[0].huidigeImport, lastJsonMessage[0].huidigeOpbrengst],
 						backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)'],
 						hoverOffset: 4,
 					},
 				],
 			});
-		}, 1000);
-	}, []);
+			console.log(lastJsonMessage);
+		}
+	}, [lastJsonMessage]);
 
 	return (
 		<div className='md:flex w-full justify-center' id='elektriciteit'>

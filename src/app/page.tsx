@@ -3,12 +3,15 @@
 import Electricity from '@/components/electricity';
 import Laadpaal from '@/components/laadpaal';
 import MainNav from '@/components/main-nav';
+import AuthUserContext from '@/contexts/AuthUserProvidor';
 import { useRouter } from 'next/navigation';
+import { useContext } from 'react';
 
 export default function Home() {
+	const userContext = useContext(AuthUserContext);
 	const router = useRouter();
 
-	if (!localStorage.getItem('token')) {
+	if (userContext.userName === null) {
 		router.push('/login');
 		return null;
 	}

@@ -25,7 +25,6 @@ export default function MainNav() {
 				</SheetTrigger>
 				<SheetContent side='left'>
 					<Link href='#'>
-						{/* <MountainIcon className='h-6 w-6' /> */}
 						<span className='sr-only'>Clean Car</span>
 					</Link>
 					<div className='grid gap-2 py-6'>
@@ -53,9 +52,7 @@ export default function MainNav() {
 					</div>
 				</SheetContent>
 			</Sheet>
-			<Link className='mr-6 hidden lg:flex' href=''>
-				{/* <MountainIcon className='h-6 w-6' /> */}
-			</Link>
+			<Link className='mr-6 hidden lg:flex' href=''></Link>
 			<div className='flex w-full justify-center'>
 				<NavigationMenu className='hidden lg:flex'>
 					<NavigationMenuList>

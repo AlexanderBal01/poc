@@ -1,16 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useRouter } from 'next/navigation';
-import { logUserIn, loginRequest } from '@/hooks/loginHook';
+import { UseLoginRequest } from '@/hooks/loginHook';
+import AuthUserContext from '@/contexts/AuthUserProvidor';
+const bcrypt = require('bcryptjs');
 
 const Login = () => {
+	const userContext = useContext(AuthUserContext);
 	const [userName, setuserName] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState(false);
 	const router = useRouter();
 
-	if (localStorage.getItem('token')) {
+	if (userContext.userName !== null) {
 		router.push('/');
 		return null;
 	}
@@ -18,9 +21,17 @@ const Login = () => {
 	const handleSubmit = async (e: any) => {
 		e.preventDefault();
 
-		const data = await loginRequest(userName);
+		const data = await UseLoginRequest(userName);
 
-		logUserIn(password, data, setError, router);
+		if (bcrypt.compareSync(password, data[0].password)) {
+			userContext.setUserName(data[0].name);
+			console.log(data[0].name);
+
+			router.push('/');
+		} else {
+			console.log('Login failed');
+			setError(true);
+		}
 	};
 
 	return (
