@@ -44,7 +44,6 @@ const Electricity = () => {
 					},
 				],
 			});
-			console.log(lastJsonMessage);
 		}
 	}, [lastJsonMessage]);
 

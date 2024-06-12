@@ -25,7 +25,6 @@ const LaadpaalCard = () => {
 	useEffect(() => {
 		if (lastJsonMessage !== null) {
 			setData(lastJsonMessage[0]);
-			console.log(lastJsonMessage);
 		}
 	}, [lastJsonMessage]);
 

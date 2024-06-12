@@ -4,6 +4,7 @@ import { useState, useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import { UseLoginRequest } from '@/hooks/loginHook';
 import AuthUserContext from '@/contexts/AuthUserProvidor';
+import { log } from 'console';
 const bcrypt = require('bcryptjs');
 
 const Login = () => {
@@ -22,6 +23,7 @@ const Login = () => {
 		e.preventDefault();
 
 		const data = await UseLoginRequest(userName);
+		console.log(data);
 
 		if (bcrypt.compareSync(password, data[0].password)) {
 			userContext.setUserName(data[0].name);
